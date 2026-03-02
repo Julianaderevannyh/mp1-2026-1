@@ -7,8 +7,8 @@ class LongNumber {
 
 public:
     LongNumber(long long val = 0) {
-        low = val;           // младшие 32 бита
-        high = val >> 32;    // старшие 32 бита
+        low = val;           
+        high = val >> 32;    
     }
 
     long long toLL() const {
