@@ -7,12 +7,23 @@ class LongNumber {
 
 public:
     LongNumber(long long val = 0) {
-        low = val;           
-        high = val >> 32;    
+        low = val;
+        high = val >> 32;
     }
 
     long long toLL() const {
         return ((long long)high << 32) | low;
+    }
+
+    // ћетоды дл€ ввода/вывода (замен€ют friend-функции)
+    void print(ostream& os) const {
+        os << toLL();
+    }
+
+    void read(istream& is) {
+        long long val;
+        is >> val;
+        *this = LongNumber(val);
     }
 
     LongNumber operator+(const LongNumber& other) const {
@@ -30,19 +41,17 @@ public:
     LongNumber operator%(const LongNumber& other) const {
         return LongNumber(toLL() % other.toLL());
     }
-
-    friend ostream& operator<<(ostream& os, const LongNumber& num) {
-        os << num.toLL();
-        return os;
-    }
-
-    friend istream& operator>>(istream& is, LongNumber& num) {
-        long long val;
-        is >> val;
-        num = LongNumber(val);
-        return is;
-    }
 };
+
+ostream& operator<<(ostream& os, const LongNumber& num) {
+    num.print(os);
+    return os;
+}
+
+istream& operator>>(istream& is, LongNumber& num) {
+    num.read(is);
+    return is;
+}
 
 int main() {
     setlocale(LC_ALL, "Russian");
