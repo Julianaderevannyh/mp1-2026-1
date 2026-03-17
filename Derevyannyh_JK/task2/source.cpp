@@ -56,7 +56,6 @@ public:
     int scal(Vector v) {
         int s = 0;
         if (n != v.n) {
-            cout << "разные размеры\n";
             return 0;
         }
         for (int i = 0; i < n; i++)
@@ -67,7 +66,6 @@ public:
     Vector sum(Vector v) {
         Vector res(n);
         if (n != v.n) {
-            cout << "нельзя сложить\n";
             return res;
         }
         for (int i = 0; i < n; i++)
